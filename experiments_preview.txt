@@ -1,0 +1,46 @@
+# EXPERIMENTS NOTEBOOK PREVIEW
+# (Full Jupyter notebook would include interactive plots)
+
+## Cell 1: Load Results
+
+```python
+import json
+import matplotlib.pyplot as plt
+
+with open('mock_results/exp1_density_results.json') as f:
+    exp1 = json.load(f)
+
+with open('mock_results/exp2_strategy_results.json') as f:
+    exp2 = json.load(f)
+```
+
+## Cell 2: Plot Sampling Density vs mIoU
+
+```python
+sampling_rates = [r['sampling_rate'] for r in exp1['results']]
+miou_values = [r['test_miou'] for r in exp1['results']]
+
+plt.figure(figsize=(10, 6))
+plt.plot(sampling_rates, miou_values, 'o-', linewidth=2, markersize=8)
+plt.xlabel('Sampling Rate (%)')
+plt.ylabel('Test mIoU')
+plt.title('Effect of Point Sampling Density on Segmentation Performance')
+plt.grid(alpha=0.3)
+plt.savefig('density_vs_miou.png', dpi=150)
+```
+
+## Cell 3: Compare Strategies
+
+```python
+strategies = [r['strategy'] for r in exp2['results']]
+miou_values = [r['test_miou'] for r in exp2['results']]
+
+plt.figure(figsize=(8, 6))
+plt.bar(strategies, miou_values, color=['#3498db', '#2ecc71'])
+plt.ylabel('Test mIoU')
+plt.title('Random vs Stratified Sampling (1% labeled pixels)')
+plt.ylim([0, 0.7])
+plt.savefig('strategy_comparison.png', dpi=150)
+```
+
+[... additional cells with per-class IoU, confusion matrices, prediction visualizations ...]
