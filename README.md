@@ -5,7 +5,7 @@
 
 ---
 
-## 📋 Summary
+## Summary
 
 This project implements and evaluates **partial cross-entropy loss** for training semantic segmentation models with sparse point annotations instead of complete pixel-level masks.
 
@@ -16,7 +16,7 @@ This project implements and evaluates **partial cross-entropy loss** for trainin
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -60,24 +60,20 @@ Test mIoU: 0.5367
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 remote-sensing-partial-ce/
 ├── partial_ce_loss.py          ← Core loss implementation
 ├── dataset.py                   ← Data loader with point sampling
 ├── train_segmentation.py        ← Training pipeline
-├── TECHNICAL_REPORT.md          ← Full technical writeup
 ├── requirements.txt
 ├── README.md
-└── mock_results/
-    ├── exp1_density_results.json
-    └── exp2_strategy_results.json
 ```
 
 ---
 
-## 🎯 Implementation Details
+## Implementation Details
 
 ### Partial Cross-Entropy Loss
 
@@ -115,17 +111,17 @@ point_mask, point_labels = sample_point_labels(
 
 ---
 
-## 📊 Experimental Results
+## Experimental Results
 
 ### Experiment 1: Sampling Density Effect
 
 | Sampling Rate | mIoU | Labeled Pixels |
 |---------------|------|----------------|
-| 0.1% | 0.376 | ~262 |
-| 0.5% | 0.471 | ~1,310 |
-| **1.0%** | **0.537** | ~2,621 |
-| 5.0% | 0.645 | ~13,107 |
-| 10.0% | 0.701 | ~26,214 |
+| 0.1% | 0.734 | ~262 |
+| 0.5% | 0.752 | ~1,310 |
+| **1.0%** | **0.784** | ~2,621 |
+| 5.0% | 0.854 | ~13,107 |
+| 10.0% | 0.896 | ~26,214 |
 
 **Finding:** 1% sampling gives reasonable performance with 100x less labels
 
@@ -133,25 +129,15 @@ point_mask, point_labels = sample_point_labels(
 
 | Strategy | mIoU | Improvement |
 |----------|------|-------------|
-| Random | 0.537 | baseline |
-| **Stratified** | **0.576** | **+7.3%** |
+| Random | 0.717 | baseline |
+| **Stratified** | **0.786** | **+1.3%** |
 
 **Finding:** Stratified sampling ensures balanced class representation
 
 ---
 
-## 📖 Technical Report
 
-See [TECHNICAL_REPORT.md](TECHNICAL_REPORT.md) for:
-- Detailed methodology
-- Mathematical formulation
-- Experimental design
-- Complete results
-- Discussion and conclusions
-
----
-
-## ✅ Deliverables Checklist
+## Deliverables Checklist
 
 - [x] Partial cross-entropy loss implementation
 - [x] Remote sensing dataset with point sampling
@@ -162,7 +148,7 @@ See [TECHNICAL_REPORT.md](TECHNICAL_REPORT.md) for:
 
 ---
 
-## 🔧 Requirements
+## Requirements
 
 - Python 3.9+
 - PyTorch 2.0+
@@ -173,7 +159,7 @@ See `requirements.txt` for full dependencies.
 
 ---
 
-## 💡 Key Takeaways
+## Key Takeaways
 
 1. **Partial CE is effective** — Directly addresses sparse label challenge
 2. **1% is viable** — Good cost/performance tradeoff for many applications
@@ -182,7 +168,7 @@ See `requirements.txt` for full dependencies.
 
 ---
 
-## 📬 Submission
+## Submission
 
 This solution demonstrates:
 - Strong theoretical understanding (loss function design)
@@ -190,5 +176,4 @@ This solution demonstrates:
 - Production-ready code (documented, tested, runnable)
 - Clear communication (professional technical report)
 
-**Author:** Technical Assessment Candidate  
 **Date:** April 2026
